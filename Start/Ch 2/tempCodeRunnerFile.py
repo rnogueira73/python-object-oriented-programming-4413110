@@ -29,4 +29,3 @@ class C(A, B):
 
 c = C("Class C")
 print(C.__mro__)
-c.showprops()
