@@ -23,7 +23,14 @@ class Stock(Asset):
         self.company = company
         self.ticker = ticker
 
+    def __str__(self):
+        return f"{self.ticker}: {self.company} -- ${self.price}"
 
+    def __lt__(self,value):
+        if not isinstance(value,Asset):
+            raise ValueError("No se puede comparar algo que no es un Asset")
+        return self.price < value.price
+    
 class Bond(Asset):
     def __init__(self, price, description, duration, yieldamt):
         super().__init__(price)
@@ -31,7 +38,14 @@ class Bond(Asset):
         self.duration = duration
         self.yieldamt = yieldamt
 
+    def __str__(self):
+        return f"{self.description}: {self.duration}yr : ${self.price} : {self.yieldamt}%"
 
+    def __lt__(self,value):
+        if not isinstance(value,Asset):
+            raise ValueError("No se puede comparar algo que no es un Asset")
+        return self.yieldamt < value.yieldamt
+    
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
 stocks = [
     Stock("MSFT", 342.0, "Microsoft Corp"),
