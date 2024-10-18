@@ -10,7 +10,7 @@ from abc import ABC, abstractmethod
 
 @dataclass
 class Asset(ABC):
-    price: float
+    price = float
 
     @abstractmethod
     def __lt__(self,value):
@@ -18,8 +18,8 @@ class Asset(ABC):
 
 @dataclass
 class Stock(Asset):
-    ticker: str
-    company: str
+    ticker = str
+    company = str
         
     def __lt__(self,value):
         if not isinstance(value,Asset):
@@ -28,9 +28,9 @@ class Stock(Asset):
     
 @dataclass    
 class Bond(Asset):
-    description: str
-    duration: int
-    yieldamt: float
+    description = str
+    duration = int
+    yieldamt = float
 
     def __lt__(self,value):
         if not isinstance(value,Asset):
